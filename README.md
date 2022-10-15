@@ -1,5 +1,3 @@
-# Django-Gray-Image-converter-and-compressor
-Using PILLOW library converting RGB image to Gray image and compress the size of the image.
 
 Commads:
 
