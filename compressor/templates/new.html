@@ -1,0 +1,20 @@
+{% for img in images %} 
+<div class="col-sm-6">
+    <div class="row box">
+        <div class="col-sm-6">
+            <h6> تصویر اصلی </h6>
+            <a href="{{ img.original_img.url }}" download>
+                <img src="{{ img.original_img.url }}" alt="Your Image will come here">
+            </a>
+            Size: {{ img.original_size }}B
+        </div>
+        <div class="col-sm-6">
+            <h6> ( %{{img.quality}} ) تصویر خاکستری </h6>
+            <a href="{{ img.converted_img.url }}" download>
+                <img src="{{ img.converted_img.url }}" alt="Converted Image will come here">
+            </a>
+            Size: {{ img.converted_size  }}B
+        </div>
+    </div>
+</div>
+{% endfor %} 

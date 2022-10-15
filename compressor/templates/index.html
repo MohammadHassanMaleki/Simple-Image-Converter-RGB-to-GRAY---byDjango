@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css %}
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+<style>
+img{
+    width: 100%;
+    padding: 10px;
+}
+
+.box{
+    border: 1px solid blueviolet;
+    padding: 5px;
+    margin: 5px;
+}
+.titer{
+    font-weight: bold;
+}
+</style>{% endblock %}
+{% block title %} تبدیل تصویر رنگی به تصویر خاکستری {% endblock %} 
+{% block header %}
+<center><h2 class="titer"> تبدیل تصویر رنگی به تصویر خاکستری و فشرده سازی </h2></center><br>
+<div class="row">
+    <div class="col-sm-12">
+        <center>
+            <h4> فایل خود را در این قسمت بارگذاری کنید</h4>
+            <form method = "post" enctype="multipart/form-data"> 
+                {% csrf_token %} 
+                {{ form.as_p }} 
+                <b> توجه : برای فشرده سازی تصویر، یک عدد بین 30 - 60 وارد نمائید(برای مثال : 40) </b><br>
+                <button type="submit" class="btn btn-dark"> ارسال نمائید </button> 
+            </form> 
+        </center>
+    </div>
+</div>
+{% endblock %}
+{% block body %}
+
+<center><h4> برای دانلود تصویر، بر روی آن کلیک نمائید </h4></center><br>
+<div class="row ">
+    <div class="col-sm-12">
+        <div class="row box">
+            <div class="col-sm-6">
+                <h6> تصویر اصلی </h6>
+                <a href="{{ images.original_img.url }}" download>
+                    <img src="{{ images.original_img.url }}" alt="Your Image will come here">
+                </a>
+                Size: {{ images.original_size }}B
+            </div>
+            <div class="col-sm-6">
+                <h6> ( %{{images.quality}} ) تصویر خاکستری </h6>
+                <a href="{{ images.converted_img.url }}" download>
+                    <img src="{{ images.converted_img.url }}" alt="Converted Image will come here">
+                </a>
+                Size: {{ images.converted_size  }}B
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block custom_js %}
+
+
+{% endblock %} 
